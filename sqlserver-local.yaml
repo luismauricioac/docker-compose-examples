@@ -1,0 +1,15 @@
+## docker compose -f sqlserver-local.yaml up
+version: '3.8'
+services:
+  sqlserver:
+    image: mcr.microsoft.com/azure-sql-edge
+    user: '0:0'
+    container_name: sqlserver
+    ports:
+      - 1433:1433
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: Admin123456&
+      MSSQL_PID: Developer
+    volumes:
+      - ~/docker/sqlserver-data:/var/opt/mssql
